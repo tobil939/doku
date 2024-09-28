@@ -1,0 +1,486 @@
+\documentclass[10pt,a4paper,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+\author{Tobias Leitz}
+\title{Linux mit verschiedenen Paketen}
+\begin{document}
+\maketitle
+\tableofcontents
+\part{Linux}
+\chapter{Allgemein}
+\section{Befehle}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace{60mm} \= \kill
+\> Befehl \> Bedeutung \\
+\> ls \> Zeig Inhalt des aktuellen Verzeichnis an\\
+\> pwd \> Zeig den aktuellen Pfad an\\
+\> cd "Pfad" \> geht in den angegeben Pfad\\
+\> cd .. \> geht einen Ordner höher\\
+\> cd \textasciitilde /"Pfad" \> es muss nicht der ganze Pfad angegeben werden\\
+\> rm "Datei" \> Löscht die angegebne Datei\\
+\> cp "Pfad\&Datei" "nach Pfad\&Datei" \> kopiert eine Datei\\ 
+\> mv "Pfad\&Datei" "nach Pfad\&Datei" \> verschiebt eine Datei\\
+\> mv "Name\_alt" "Name\_neu" \> Umbenennen einer Datei oder Ordner \\
+\> mkdir "Ordner" \> erstellt ein Verzeichnis\\
+\> rmdir "Ordner" \> löscht ein Verzeichnis\\
+\> rm -r "Pfad" \> löscht ein Verzeichnis\\
+\> cat "Datei.txt" \> Zeigt den Inhalt einer txt an\\
+\> less "Datei.txt" \> Zeit den Inhalt einer txt an, Seitenweise\\
+\> grep "Bild" Datei.txt \> sucht nach Bild in der Datei.txt\\
+\> diff "Datei1" "Datei2" \> zeigt den Unterschied von zwei Dateien an\\
+\> ping "IP oder Web.de" \> Überprüft die Netzwerkverbindung \\
+\> ifconfig \> Zeigt die Konfiguration der Netzwerkschnittstelle an\\
+\> zip "Datei" \> Datei in Zip packen\\
+\> unzip "Datei.zip" \> Datei auspacken\\
+\> tar "Datei" \> Datei in .tar packen oder entpacken\\
+\> clear \> terminal leeren\\
+\> apt install "Paket" \> Installiert ein Paket Ubuntu\\
+\> apt update \> Sucht nach Updates Ubuntu\\
+\> pacman -S "Paket" \> Installiert ein Paket Arch\\
+\> yay "Paket" \> Installiert ein Paket Arch, AUR \\
+\> yay -Syu \> Sucht nach Updates Arch \\
+\end{tabbing}
+\section{Anwendungen}
+\subsection{Editor}
+\subsubsection{nano}
+\paragraph{Tastemkombination}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+\> Tastenkombi \> Bedeutung  \\
+\> Strg + X \> Datei schließen\\
+\> Strg + o \> Datei speichern unter \\
+\> Strg + s \> Datei speichern\\
+\> Alt + w \> in Datei Suchen\\
+\> Alt + r \> Suchen und Ersetzten\\
+\> Strg + k \> markierter Text auschneiden\\
+\> Strg + a \> Sprung an Zeilenanfang\\
+\> Strg + e \> Sprung an Zeilenende\\
+\> Pos1 \> Sprung an Zeilenanfang\\
+\> Ende \> Sprung an Zeilenende\\
+\end{tabbing}
+\subsubsection{git}
+\paragraph{Befehle}
+(config)\\
+\begin{verbatim}
+git config --global user.name "  "
+git config --global user.email "  "
+git config --global core.editor nvim
+git config ..global init.defaultBranch main
+git config ..list
+\end{verbatim}
+(init Repository)
+\begin{verbatim}
+git init				#im Ornder ausführen der angelegt werden soll
+git add file.x
+git add LICENSE
+git commit -m 'Kommentar'
+\end{verbatim}
+(clonen)\\
+\begin{verbatim}
+git clone https://github,com/...............
+git clone httos://github.com/............... /path/   #kopiert in Verzeichnis
+git status			#Zeiot an ob die Verzeichnises aktuell sind
+git status -s      #Status Anzeige, kürzerer Text
+\end{verbatim}
+\subsubsection{vim}
+verwende ich für LaTeX unter Linux\\
+\paragraph{Installation}
+\textit{yay -S vim}\\
+\textit{yay -S vim-latexsuite}\\
+\paragraph{Tastenkombination}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+(motions)\\
+\> j,k,l,ö	\>	Cursor links, runter, hoch, rechts\\
+(von mir geänder, std h,j, k, l)\\
+\> w	 \>	Nächster Wortanfang\\
+\> W	 \>	Nächster WORD-Anfang (durch Blank abgegrenzt)\\
+\> e	 \>	Nächstes Wortende\\
+\> E	 \>	Nächstes WORD-Ende\\
+\> b	 \>	Vorheriger Wortanfang\\
+\> B	 \>	Vorheriger WORD-Anfang\\
+\> ge \>		Vorheriges Wortende\\
+\> 0	 \>	Zeilenanfang\\
+\>  \begin{math} \wedge \end{math} \>		Erstes Zeichen der Zeile\\
+\> \$ \>		Zeilenende\\
+\> )	 \>	Nächster Satzanfang\\
+\> (	 \>	Vorheriger Satzanfang\\
+\> \}	 \>	Nächstes Absatzende\\
+\> \{	 \>	Vorheriger Absatzanfang\\
+\> +	 \>	Erstes Zeichen der nächsten Zeile\\
+\> -	 \>	Erstes Zeichen der vorherigen Zeile\\
+\> \% \>		Zugehörige Klammer\\
+\> gg \>		Dateianfang\\
+\> G	 \>	Dateiende\\
+\> <n>G \>		Zeile <n>\\
+\> H	 \>	Erste Bildschirmzeile\\
+\> M	 \>	Bildschirmmitte\\
+\> L	 \>	Letzte Bildschirmzeile\\
+\> C-f	\>	Bildschirmseite runter\\
+\> C-b	\>	Bildschirmseite hoch\\
+\> C-d	\>	Halbe Bildschirmseite runter\\
+\> C-u	\>	Halbe Bildschirmseite hoch\\
+\> [<n>]zt \>		aktuelle Zeile auf Bildschirmzeile <n> scrollen\\
+\> [<n>]zb	\> 	aktuelle Zeile auf <n>t-lezte Bildschirmzeile scrollen\\
+\> zz	\>	aktuelle Zeile auf Bildschirmmitte scrollen\\
+\\
+(motion Textobjekt)\\
+\> a \> 	Äußeres Objekt (inkl. Klammern, etc.)\\
+\> i	 \> 	Inneres Objekt (ohne Klammern und Leerraum)\\
+\> w \> 	Wort\\
+\> W \> 	WORD\\
+\> s \> 	Satz\\
+\> p \> 	Absatz\\
+\> ( ) b \> 		() - Klammerblock\\
+\> [ ]	\> 	[] - Klammerblock\\
+\> < > \> < > - Klammerblock\\
+\> \{ \} B	\> 	\{\} - Klammerblock\\
+\\
+(auswahl im Visual Mode)\\
+\> v \> einzelne Zeichen\\
+\> V \> einzelne Zeilen\\
+\> C-v \> rechteckiger Klammern\\
+\\
+(suchen)\\
+\> /string \> Vorwärtssuche nach string\\
+\> ?string \> Rückwärtssuche nach string\\
+\> n \> nächster Treffer der Suche\\
+\> N \> nächster Treffer in andere Richtung\\
+\\
+(Wechsel in Eingabemodus)\\
+\> i	 \>	Text vor der aktuellen Position einfügen\\
+\> I	 \>	Text am Zeilenanfang (erstes Nicht-Blank) einfügen\\
+\> a	 \>	Text nach der aktuellen Position einfügen\\
+\> A	 \>	Text am Ende der aktuellen Zeile einfügen\\
+\> R	 \>	Text ab aktueller Position überschreiben\\
+\> o	 \>	Neue Zeile nach der aktuellen erzeugen\\
+\> O	 \>	Neue Zeile vor der aktuellen erzeugen\\
+\> s	 \>	Aktuelles Zeichen löschen, dann insert\\
+\> S	 \>	Aktuelle Zeile löschen, dann insert\\
+(Tasten im Eingabemodus)\\
+\> Ctl-w \> letztes Wort löschen\\
+\> ctl-p \> vervollständigen\\
+\> Ctl-t \> Zeile einrücken\\
+\> Ctl-d \> Zeile Ausrücken\\
+\> ESC \> Modus verlassen\\
+\\
+(Befehle)\\
+\>[count]command		\>	command count-mal ausführen (default: 1)\\
+\> u		\>		Letzten Befehl rückgängig machen\\
+\> U		\>		Undo der aktuellen Zeile\\
+\> x		\>		Zeichen unter Cursor löschen\\
+\> X		\>		Zeichen vor Cursor löschen\\
+\> d<selection>	\>		Löschen bis zur Position <motion>\\
+\> dd		\>		Aktuelle Zeile löschen\\
+\> D			\>	Von Cursor bis zum Zeilenende löschen\\
+\> y<selection>	\>		Kopieren in Default-Puffer bis <motion>\\
+\> yy			\>	Kopieren der aktuellen Zeile\\
+\> c<selection>	\>		Ersetzen (Löschen und Eingabe) bis <motion>\\
+\> cc		\>		Aktuelle Zeile ersetzen\\
+\> C			\>	Vom Cursor bis zum Zeilenende ersetzen\\
+\> p			\>	Default-Puffer nach Cursor einfügen (von d oder y)\\
+\> P			\>	Default-Puffer vor Cursor einfügen\\
+\> .			\>	Wiederholung des letzten d oder c\\
+\> J			\>	Verbindet die aktuelle mit der nächsten Zeile\\
+\> r<char>	\>			Ersetzt das aktuelle Zeichen durch <char>\\
+\> ~			\>	Ändert Groß/Kleinschreibung des akt. Zeichens\\
+q<char> <commands> q \\
+Makro namens <char> aufzeichnen\\
+\> @<char>		\>		Makro namens <char> aufrufen\\
+:[range] s/from/to/[g][c]	in range (default: aktuelle Zeile)  \\
+erstes from durch to ersetzen; g=alle Vorkommen ersetzen; c=mit Bestätigung\\
+:[range] g[!]/pattern/command	in range (default: ges. Datei)  \\
+command in Zeilen ausführen, die pattern (! = nicht) erfüllen \\
+\> !<motion> <system command> \\
+Filtern bis <motion> durch <system command>\\
+\end{tabbing}
+\subsubsection{LaTeX}
+\paragraph{Tastenkombination}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+\> Tastenkombi \> Bedeutung  \\
+\> F1 \> schnell Übersetzen \\
+\> Strg + f \> Suchen \\
+\> Strg + z \> Rückgängig machen\\
+\> Strg + y \> Rückgängig machen des Rückgängig\\
+\> Strg + Pos1 \> Sprung an Anfang des Dokuments\\
+\> Strg + Ende \> Sprung an Ende des Dokuments\\
+\> Pos1 \> Sprung an den Anfang der Zeile\\
+\> Ende \> Sprung an das Ende der Zeile\\ 			
+\> Strg + a \> alles auswählen\\
+\> Strg + b \> fett\\
+\> Strg + i \> kursiv\\
+\end{tabbing}
+sub
+\subsection{Neovim}
+\subsubsection{Installation}
+\subsubsection{conf}
+ini-Datei anlegen
+\begin{verbatim}
+~/.config/nvim/init.lua
+\end{verbatim}
+\subsubsection{Befehle}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+\> Befehl \> Bedeutung  \\
+\> :q \> nvim beenden\\
+\> nvim \> öffnet Neovim aus dem Terminal\\
+\> nvim Dateiname \> öffnet eine Datei mit dem angegeben Namen in Neovim\\ 
+\end{tabbing}
+\subsubsection{Tastenkombinationen}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+\> Tastenkombi \> Bedeutung  \\
+\end{tabbing}
+\chapter{Arch}
+\section{Installation}
+ISO über USB-Stick laden, auf X64 und i386 achten.
+Tastatur am Anfang auf US-Layout eingestellt
+\textit{loadkeys de-latin1} um deutsches Layout zu erhalten
+\subsection{archinstall not found}
+Kam bei mir bei 32bit vor, nicht bei 64bit
+am besten Ubuntu installieren!
+\subsection{Wlan}
+Installation über Wlan.
+1. \textit{iwctl} \\
+2. \textit{station list}\\ \\
+3. \textit{station "von Liste auswählen" get-networks}\\
+4- \textit{station "von Liste auswählen" connect "von Liste auswählen"}\\
+\hspace*{3 mm} Netzwerk am besten ohne Sonderzeichen, das PW auch über Sonderzeichen\\
+5. \textit{ctl+c} um wieder zurück zu kommen\\
+\subsection{Install-Script}
+Achtung US-Tastatur\\
+1. \textit{archinstall}\\
+2. \textit{Mirrors} ändern auf "Germany"\\
+3. \textit{Disk configuration} Festplatte auf btfs eingestellt,kann auch Partitioniert werden\\
+4. \textit{Bootloader} hab ich auf grub geändert\\
+5. \textit{Hostname} Name für Root\\
+6. \textit{Root password} \\
+7. \textit{User account} mein Benutzer angelegt und als Superuser eingerichtet\\
+8. \textit{Profile} Einstellung wie das System genutzt wird, z.B. Server usw.\\
+9. \textit{Audi} geändert auf Pipewire\\
+10. \textit{Kernals} nichts geändert\\
+11. \textit{Additional packages}
+12. \textit{Network configuration} auf grafisch umgestellt\\
+13. \textit{Timezone} Europe/Berlin\\
+14. \textit{Automatic time sync} true\\
+15. \textit{Optional repositories} nichts geändert\\
+Installation beginnt\\
+16. \textit{chroot into for configurations?} ja, gnome installieren\\
+17. \textit{pacman -S gnome}
+18.\textit{emoji font} irgendeins\\
+Installation beginnt\\
+19. \textit{exit} \textit{shutdown -h now} Rechner neu starten\\
+Ab jetzt sollte auch die DE-Tastatur aktiv sein\\
+\subsection{gnome}
+startet leider nicht automatisch\\
+\textit{sudo systemctl enable gdm.service}
+\subsection{i3wm}
+siehe Grafik i3wm\\
+\section{Installation Pakete}
+\paragraph{Update}
+Immer wieder mal nach Updates suchen, am besten vor größeren Installationen\\
+\textit{sudo pacman -Syu}\\
+\textit{sudo pacman -Syyu} scannt die ganze Datenbank\\
+\paragraph{neofetsch}
+\textit{sudo pacman -S neofetch} Infprmationen im Terminal über das System\\
+-bashrc finde und am Ende neofetch rein schreiben\\
+\paragraph{alacritty}
+\textit{sudo pacman -S alacritty} installtiert ein Terminal für i3\\
+es gibt am Anfang keine config, hab eines von typecraft kopiert.\\
+\paragraph{dmenu}
+\textit{sudo pacman -S dmenu}\\
+dmenu ist ein primitives Auswahlmenü für installierte Software\\
+\paragraph{firefox}
+\textit{sudo pacman -S firefox}
+\paragraph{AUR yay}
+Wir benötigt um Pakete zu installieren, wie pacman\\
+\textit{sudo pacman -S --needed base-devel git}\\
+\textit{git clone http://aur.archlinux.org/yay-bin.git}\\
+\textit{cd yay-bin}\\
+\textit{makepkg -si}\\
+\textbf{yay --version}\\
+\paragraph{nano}
+\textit{yay -S nano} einfacher Texteditor, aktuell bin ich mit nvim noch zu schlecht.\\
+\paragraph{Schriftarten}
+Hier werden die Meslo Nerd Font installiert\\
+\textit{yay -S ttf-meslo-nerd} \\
+\paragraph{stow}
+\textit{yay -S stow} 
+\paragraph{picom}
+\textit{yay -S picom} bessere grafische Darstellung, X11 composer\\
+\begin{verbatim}
+cp /etc/xdg/picom.conf ~/.config/picom.conf
+\end{verbatim}
+\paragraph{polybar}
+\textit{yay -S polybar} Statusleiste bei i3wm\\
+config von typecraft kopiert\\
+\paragraph{feh}
+\textit{yay -S feh}
+\paragraph{git}
+\textit{yay -S git}\\
+\textit{yay -S git-git}\\
+\paragraph{timeshift}
+\textit{pacman -S timeshift}
+\paragraph{xorg}
+\textit{pacman -S xorg}
+
+\chapter{Ubuntu}
+\section{Installation}
+\section{Installation Pakete}
+\textit{sudo apt install python3}
+\textit{sudo apt install python-pip}
+\subsubsection{Bedienung}
+\paragraph{Tastemkombination}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \=\hspace*{40mm} \= \kill
+\> Tastenkombi \> Bedeutung \> Kommentar \\
+\> Windows+Enter \> öffnet das Terminal
+\end{tabbing}
+\paragraph{Terminal-Befehle}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \=\hspace*{40mm} \= \kill
+\> Befehl \> Bedeutung \> Kommentar \\
+\> nano "filename" \> öffnet einen Editor
+\end{tabbing}
+\chapter{Grafik}
+\section{Gnome}
+\subsection{Installation}
+\subsection{config}
+\subsection{Bedienung}
+\subsubsection{Tastenkombination}
+\section{i3wm}
+\subsection{Installation}
+\textit{sudo apt install i3}\\
+\textit{sudo pacman -S i3}\\
+Bei der Installation wird gefragt was die Mod-Taste sein soll, Windwos oder Alt, ich verwende Alt.
+Finde es bei manachen Kombis leichter zum greifen\\
+\paragraph{xorg}
+\textit{sudo pacman -S xorg} ist sowas wie die Basis von i3wm\\
+\subsection{config}
+Config Datei in \textit{\textasciitilde /config/i3/config}\\
+Am besten eine Kopie erstellen in anderen Ornder\\
+\paragraph{MOD-Taste}
+\begin{verbatim}
+set $mod Mod1
+\end{verbatim}
+Mod1 ist die ALT-Taste
+Mod4 ist die Windwos-Taste
+\paragraph{Hintergrund}
+feh musss installier sein\\
+unter \textit{set \$mod Mod4} folgende Zeile einfügen und Bilder vorher in diesem Verzeichnis mit diesem Namen ablegen.
+\begin{verbatim} 
+exec_always feh --bg-scale ~/.config/i3/backround.jpg 
+\end{verbatim}
+\paragraph{polybar}
+shell zuerst rechte vergeben\\
+\begin{verbatim}
+chmod +x launch_polybar.sh
+\end{verbatim}
+\begin{verbatim}
+exec_always --no-startup-id killall polybar
+exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+\end{verbatim}
+Block mit bar \{ entfernen oder auskommentieren\\
+\paragraph{Sperrbildschirm}
+Im Termianl \textit{i3lock} eingeben, oder im config mit Kombi hinterlegen:
+\begin{verbatim}
+bindsym $mod+Shift+x exec i3lock -- color "$bg-color"
+\end{verbatim}
+Zum entsperren, einfach das PW eingeben und Enter drücken.
+\paragraph{Schriftart und Größe}
+\begin{verbatim}
+font pango:Meslo LGM Nerd Font 14
+\end{verbatim}
+\textit{font pango\:} ist das Verzeichnis, \textit{Meslo LGM Nerd Font} die Schriftart, wurde vorher installiert, \textit{14} ist die Schriftgröße\\
+\paragraph{Terminal}
+\begin{verbatim}
+bindsym $mod+Return exec i3-sensible-terminal
+\end{verbatim}
+\textit{mod+Return} gibt vor mit welcher Kombi das Terminal geöffnet wird, \textit{i3-sensible-terminal} welches Terminal verwendet werden soll.\\
+\paragraph{picom}
+\begin{verbatim}
+exec --no-startup-id picom
+\end{verbatim}
+\paragraph{Programm öffnen mit Kombi}
+\begin{verbatim}
+bindsym $mod+u exec firefox
+bindsym $mod+i exec i3.sensible-terminal -e nvim ~/.config/i3/config
+\end{verbatim}
+erste Zeile öffnet Firefox, die zweite Zeile öffnet die config Datei mit Neovim\\
+Bei manchen Programmen kann es vorkommen das man es in einem Termin öffnen muss, wie z.B. Neovim\\
+Daher zuerst eine terminal -e dann die Software\\
+\subsubsection{Status bar}
+\subsection{Bedienung}
+\paragraph{Starten}
+In Gnome ausloggen. Beim der Eingabe des Passworts, rechts unten oder direkt neben dem Benutzernamen. Auf das Zahnrad klicken, dort kann man meist zwischen den Oberflächen auswählen. Letzte Einstellung bleibt gespeichert.\\
+\\
+Sollte es nich zur Auswahl stehen, schauen ob xorg installiert ist\\
+\paragraph{dmenu}
+Primitives Auswahlmenü für installierte Software auf dem System. Wird mit ALT + d ausgeführt und erscheint oben auf dem Monitor. Die auswählbaren Programme werden alphabetisch angezeigt. Man kann auch die Software eintippen, die Liste wird dann kleiner. Enter drücken um die Software zu starten, ESC um das dmenu zu verlassen.
+\subsubsection{Tastenkombination}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace*{30mm} \= \kill
+\> Tastenkombi \> Bedeutung  \\
+\> linke Maus + mod \> fliegendes Fenster an die gewünschte Position ziehen\\
+\> mod + Enter \> öffnet das Terminal\\
+\> mod + q \> schließt Fenster\\
+\> mod + shift + e \> schließt i3\\
+\> mod + d \> öffnet das d-Menü\\
+\> mod + j \> Fokus nach links\\
+\> mod + k \> Fokus nach unten\\
+\> mod + l \> Fokus nach oben\\
+\> mod + ö \> Fokus nach rechts\\
+(das gleiche geht auch mit den Pfeiltasten)\\
+(Fokus auf das ausgewählte Fenster)\\
+\> mod + shift + j \> Windows Fokus nach links\\
+\> mod + shift + k \> Windows Fokus nach unten\\
+\> mod + shift + l \> Windows Fokus nach oben\\
+\> mod + Shift + ö \> Windows Fokus nach rechts\\
+(das gleiche geht auch mit den Pfeiltasten)\\
+\> mod + f \> Fenster vollbild\\
+\> mod + s \> layout stacking, übereinander, Auswahl mit der hoch runter Taste\\
+\> mod + w \> Layout tabbed übereinander, Auswahl mit rechts oder links Taste\\
+\> mod + e \> Layout toggle split, neues Fenster wird neben dem alten aufgerufen\\
+\> mod + h \> neues Fenster wird horizontal eingefügt zum alten\\
+\> mod + v \> neues Fenster wird vertikal eingefügt zum alten\\
+\> mod + shift + space \> neues Fenster wird fliegend aufgerufen\\
+\> mod + space \> Fokus Modus toggel ?\\
+\> mod + a \> Fokus auf übergeordnetem Fenster\\
+\> mod + d \> Fokus auf untergeordnetem Fenster\\
+\> mod + 1...10 \> neuen Arbeitsplatz öffnen, 0 = 10\\
+\> mod + shift + 1...10 \> Fokus Fenster zu Arbeitsplatz verschieben\\
+\> mod + shift + c \> config Datei wird neue geladen\\
+\> mod + shift + r \> i3 wird neu gestartet, Fenster und Arbeitsplätze bleiben erhalten\\
+\> mod + shift + e \> i3 wird geschlossen mit Abfrage ob wirklich beendet werden soll\\
+\end{tabbing}
+\paragraph{MOD-Taste} Windows-Taste als Mode-Key verwenden\\
+Fenster schließen\\
+\textit{bindsym \$mod+q kill}\\ 
+\paragraph{Status Bar}
+Statusleiste nach oben\\
+\textit{bar\{} suchen\\
+\textit{position top} einfügen\\ 
+Pfad zur config Statusbar \textit{~/etc/i3status.conf}\\
+Am besten original kopieren und in .i3status\_bunga.conf umbennen\\
+In i3 conf \textit{bar\{} suchen, \\
+und hinter \textit{status command i3status --config \textasciitilde/.i3status\_bunga.conf }\\
+\paragraph{Schriftgröße}
+\textit{font pango\:monospace 14}\\
+\paragraph{Schriftart ändern}
+\url{https://medium.com/@almatins/install-nerdfont-or-any-fonts-using-the-command-line-in-debian-or-other-linux-f3067918a88c}\\
+in confi \textit{font pango:.................. 14} suchen,\\ gleiche wie bei der Schriftgröße,\\ 
+und in \textit{font pango:Meslo LGM Nerd Font 14} ändern\\ 
+\end{document}\\

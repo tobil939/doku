@@ -1,0 +1,351 @@
+\documentclass[10pt,a4paper,oneside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{arev}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+\author{Tobi L}
+\title{LaTeX}
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Installation}
+Beziehe mich hier nur auf die Installation bei Arch, für andere Linux Distros, müsste pacman ersetzt werden durch z.B. apt-get install\\
+\section{Compiler}
+	\begin{verbatim}
+		sudo pacman -S texlive
+		sudo pacman -S texlive-utiliies
+	\end{verbatim}
+\section{Editoren}
+\subsection{Texmaker}
+Grafische Entwiklungsumgebung zum erstellen von LaTeX Dokumenten.\\
+\subsubsection{Eigenschaften}
+	\hspace*{5mm} - Assisten zum erstellen von Dokumenten\\
+	\hspace*{5mm} - Anzeige der Dokumentenstruktur\\
+	\hspace*{5mm} - Werkzeugleiste mit den wichtigsten LaTeX Befehlen\\
+	\hspace*{5mm} - Buttons für Compilierung und Anzeige der PDF\\
+	\hspace*{5mm} - Eingebaute Option das PDF direkt in der Anwendung anzeigen zu lassen\\
+\subsubsection{Installation}
+	\begin{verbatim}
+		sudo pacman -S texmaker
+	\end{verbatim}
+\subsubsection{Konfiguration}
+\begin{math} Options \rightarrow Configure\_Texmaker \rightarrow Commands \rightarrow PDF Viewer \end{math}\\
+Um die PDF Datei im externen Fenster anzeigen zu lassen.\\
+\subsection{Neovim}
+Wenn man der Maus den Krieg erklären will, ambesten noch mit Arch und i3wm\\
+\subsubsection{Eigenschaften}
+	\hspace*{5mm} - \\
+	\hspace*{5mm} - \\
+	\hspace*{5mm} - \\
+	\hspace*{5mm} - \\
+	\hspace*{5mm} - \\
+\subsubsection{Installation}
+	\begin{verbatim}
+		sudo pacman -S neovim
+	\end{verbatim}
+\subsubsection{Konfiguration}
+lazyvim und plugin
+\section{Konfiguration}
+Aktuell fällt mir nichts ein. Hab bisher auch noch nichts konfiguriert.\\
+War alles bisher nur Einstellungen in nvim.\\
+\chapter{Bedienung}
+\section{Compilieren}
+Datei z.B. in nvim oder Texmaker  erstellen und als .tex speichern.\\	
+\subsection{Compilieren}
+Erstellt alle notwendigen Daten, wird empfohlen wenn der Text das erste Mal umgewandelt wird.\\
+	\begin{verbatim}
+		latex text.tex
+	\end{verbatim}
+\subsection{PDFLaTeX}
+Erstellt die PDF-Datei, eine Art der schenll Umwandlung, verwende ich meist wenn ich den Text schon einmal
+Umgewandelt hab.
+	\begin{verbatim}
+	 	pdflatex text.tex
+	\end{verbatim}
+\newpage
+\section{Grundlagen für ein Dokument}
+	\begin{verbatim}
+		\documentclass[10pt,a4paper,twoside]{report}			
+																			# Schriftgröße, Papierformat, beidseitig, Bericht
+		\usepackage[utf8]{inputenc}						# verschiedene Pakete
+		\usepackage[T1]{fontenc}									# vielleicht schreibe ich 
+		\usepackage{amsmath}													# irgendwann mal
+		\usepackage{amsfonts}												# mehr dazu
+		\usepackage{amssymb}
+		\usepackage{makeidx}
+		\usepackage[colorlinks,										# wird benötigt um Links 
+		pdfpagelabels,																			# im Inhaltsverzeichnis 
+		pdfstartview = FitH,													# zu erstellen
+		bookmarksopen = true,
+		bookmarksnumbered = true,
+		linkcolor = black,
+		plainpages = false,
+		hypertexnames = false,
+		citecolor = black] {hyperref}	
+		\author{Tobi L}																		# Autor
+		\title{LaTeX}																				# Titel des Dokuments
+		\begin{document}																	# Anfang des Dukuments
+		\maketitle																							# Titelseite wird erstellt
+		\tableofcontents																	# Inhaltsverzeichnis wird erstellt
+		Dokument																									# hier zwischen das Dokument schreiben
+		\end{document}																			# Ende des Dokuments
+	\end{verbatim}
+\section{Strukturen}
+\begin{verbatim}
+\part{}
+\chapter{I}
+\section{I.I}
+\subsection{I.I.I}
+\subsubsection{}
+\paragraph{*}
+\subparagraph{**}
+\end{verbatim}
+\section{Textformen}
+\begin{verbatim}
+\begin{flushleft}
+Linksbündig
+\end{flushleft}
+\begin{center}
+Zentriert
+\end{center}
+\begin{flushright}
+Rechtsbündig
+\end{flushright}
+\end{verbatim}
+\section{Schriftgröße}
+\begin{tiny}
+tiny
+\end{tiny}
+\begin{scriptsize}
+scriptsize
+\end{scriptsize}
+\begin{footnotesize}
+footnotesize
+\end{footnotesize}
+\begin{small}
+small
+\end{small}
+\begin{normalsize}
+normalsize
+\end{normalsize}
+\begin{large}
+large
+\end{large}
+\begin{LARGE}
+LARGE
+\end{LARGE}
+\begin{huge}
+huge
+\end{huge}
+\begin{Huge}
+Huge
+\end{Huge}
+\begin{verbatim}
+\begin{tiny}
+tiny
+\end{tiny}
+\begin{scriptsize}
+scriptsize
+\end{scriptsize}
+\begin{footnotesize}
+footnotesize
+\end{footnotesize}
+\begin{small}
+small
+\end{small}
+\begin{normalsize}
+normalsize
+\end{normalsize}
+\begin{large}
+large
+\end{large}
+\begin{LARGE}
+LARGE
+\end{LARGE}
+\begin{huge}
+huge
+\end{huge}
+\begin{Huge}
+Huge
+\end{Huge}
+\end{verbatim}
+\section{Schriftakzente}
+\textbf{Schriftakzente}  \textit{Schriftakzente}  \emph{Schriftakzente}\\
+\underline{Schriftakzente} 
+\begin{verbatim}
+\textbf{Schriftakzente}  \textit{Schriftakzente}  \emph{Schriftakzente}
+\underline{Schriftakzente} 
+\end{verbatim}
+\section{Leerzeichen}
+\begin{verbatim}
+\hspace{10mm}									# horizontaler Abstand 10mm
+\hspace*{10mm}								# horizontaler Abstand 10mm vom linken Rand
+\vspace{10mm}									# vertikaler Abstand 10mm
+\vspace*{10mm}								# vertikaler Abstand vom oberen Rand
+\\																				# neue Zeile
+\newpage														# neue Seite
+\end{verbatim}
+\section{Symbole}
+< >*+-=""'' \hspace{20mm} \# gehen ohne Befehle\\
+\# \begin{verbatim} \#  \end{verbatim} 
+\begin{math} \leq \end{math} \begin{verbatim} \begin{math} \leq \end{math}  \end{verbatim} 
+\begin{math} \geq \end{math} \begin{verbatim} \begin{math} \geq \end{math}   \end{verbatim} 
+\begin{math} \sim \end{math} \begin{verbatim}  \begin{math} \sim \end{math}  \end{verbatim} 
+\begin{math} \leftarrow \end{math} \begin{verbatim}   \begin{math} \leftarrow \end{math} \end{verbatim} 
+\begin{math} \Leftarrow \end{math} \begin{verbatim}   \begin{math} \Leftarrow \end{math}  \end{verbatim}
+\begin{math} \rightarrow \end{math} \begin{verbatim}  \begin{math} \rightarrow \end{math}  \end{verbatim}
+\begin{math} \Rightarrow \end{math} \begin{verbatim}  \begin{math} \Rightarrow \end{math} \end{verbatim}
+\begin{math} \uparrow \end{math} \begin{verbatim}   \begin{math} \uparrow \end{math}  \end{verbatim}
+\begin{math} \Uparrow \end{math} \begin{verbatim}  \begin{math} \Uparrow \end{math}   \end{verbatim}
+\begin{math} \downarrow \end{math} \begin{verbatim}   \begin{math} \downarrow \end{math} \end{verbatim}
+\begin{math} \Downarrow \end{math} \begin{verbatim}  \begin{math} \Downarrow \end{math}  \end{verbatim}
+\begin{math} \leftrightarrow \end{math} \begin{verbatim}   \begin{math} \leftrightarrow \end{math}  \end{verbatim}
+\begin{math} \updownarrow \end{math} \begin{verbatim} \begin{math} \updownarrow \end{math}   \end{verbatim}
+\begin{math} /  ( ) \lbrace \rbrace \vert \Vert \end{math}
+\begin{verbatim} \begin{math} /  ( ) \lbrace \rbrace \vert \Vert \end{math} \end{verbatim}
+\section{Tabulator}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace{30mm} \=\hspace{30mm}\= \kill
+\> Befehl \> Bedeutung  \> Kommentar
+\end{tabbing}
+\begin{verbatim}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace{30mm} \=\hspace{30mm}\= \kill
+\> Befehl \> Bedeutung  \> Kommentar\\
+\end{tabbing}
+\end{verbatim}
+\section{Befehle}
+\textbf{\textit{math}} wird benötigt um Formel ein zu fügen oder manche Symbole\\
+\begin{math}
+5^{2}=\dfrac{1}{2}
+\end{math}
+\begin{verbatim}
+\begin{math}
+5^{2} \dfrac{1}{2}
+\end{math}
+\end{verbatim}
+\vspace*{5mm}
+\textbf{\textit{verbatim}} ermöglichtet es z.B. ganze Programmzeilen einzufügen
+\begin{verbatim}
+wert = eval(input("gib eine Zahl ein: "))
+\end{verbatim}
+\begin{verbatim}
+\begin{verbatim}
+wert = eval(input("gib eine Zahl ein: "))
+end{verbatim}
+\end{verbatim}
+\section{Tabellen}
+\subsection{Tabelle ohne Linien}
+\begin{center}
+\begin{tabular}[h]{lcccr}
+  Spalte 1 & Spatlte 2 & Spalte 3 & Spalte 4 \\
+  Zei1 2 1 & Zeile 2 2 & Zeile 2 3 & Zeile 2 4 \\
+\end{tabular}
+\end{center}
+\begin{verbatim}
+\begin{center}
+\begin{tabular}[h]{lcccr}
+  Spalte 1 & Spatlte 2 & Spalte 3 & Spalte 4 \\
+  Zei1 2 1 & Zeile 2 2 & Zeile 2 3 & Zeile 2 4 \\
+\end{tabular}
+\end{center}
+\end{verbatim}
+\subsection{Tabelle mit Linien}
+\begin{center}
+\begin{tabular}[h]{|l|c|c|c|r|}
+  \hline
+  1 & 2 & 3 & 4 & 5 \\
+  \hline 
+  6 & 7 & 8 & 9 & 10 \\
+  \hline 
+  11 & 12 & 13 & 14 & 15 \\
+  \hline 
+  16 & 17 & 18 & 19 & 20 \\
+  \hline 
+  21 & 22 & 23 & 24 & 25 \\
+  \hline
+\end{tabular}
+\end{center}
+\begin{verbatim}
+\begin{center}
+\begin{tabular}[h]{|l|c|c|c|r|}
+  \hline
+  1 & 2 & 3 & 4 & 5 \\
+  \hline 
+  6 & 7 & 8 & 9 & 10 \\
+  \hline 
+  11 & 12 & 13 & 14 & 15 \\
+  \hline 
+  16 & 17 & 18 & 19 & 20 \\
+  \hline 
+  21 & 22 & 23 & 24 & 25 \\
+  \hline
+\end{tabular}
+\end{center}
+\end{verbatim}
+\subsection{Tabellen Konfiguration}
+\begin{verbatim}
+\begin{tabular}[Platzierung]{Einteilung}
+  Platzierung Eckigeklammern
+  h here genau an der Stelle
+  b boddom Seitenende
+  t top Seitenanfang
+  p positon Habe ich nicht weiter verfolgt
+
+  Einteilung Geschweifteklammer
+  c center Zentriert
+  r right rechtsbündig
+  l left linksbündig
+  p(3mm) Spalte soll 3mm Breit sein
+\end{verbatim}
+\subsection{Beschriften und Verknüpfen}
+\begin{table}[h]
+\caption{Depp}
+\begin{center}
+\begin{tabular}[h]{|l|c|c|c|r|}
+  \hline
+  Spalte 1 & Spatlte 2 & Spalte 3 & Spalte 4 \\
+  \hline 
+  Zei1 2 1 & Zeile 2 2 & Zeile 2 3 & Zeile 2 4 \\
+  \hline
+\end{tabular}
+  \label{tab:depp}
+\end{center}
+\end{table}
+\begin{verbatim}
+\begin{table}[h]
+\caption{Depp}
+\begin{center}
+\begin{tabular}[h]{|l|c|c|c|r|}
+  \hline
+  Spalte 1 & Spatlte 2 & Spalte 3 & Spalte 4 \\
+  \hline 
+  Zei1 2 1 & Zeile 2 2 & Zeile 2 3 & Zeile 2 4 \\
+  \hline
+\end{tabular}
+  \label{tab:depp}
+\end{center}
+\end{table}
+\end{verbatim}
+\begin{tabbing}
+\hspace*{1mm} \=\hspace{30mm} \= \kill
+\> caption \> erzeugt eine Überschrif\\t
+\> \begin{math} label \lbrace tab:Name \rbrace \end{math} \> erzeugt eine Verknüpfung\\
+\> \begin{math} ref \lbrace tab:Name \rbrace \end{math} \> erzeugt einen Link zur Tabelle\\
+\end{tabbing}
+\end{document}
+
+

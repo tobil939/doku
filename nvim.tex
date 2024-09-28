@@ -1,0 +1,149 @@
+\documentclass[10pt,a4paper,oneside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{arev}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+
+\author{Tobi L}
+\title{VIM}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\begin{LARGE}
+ Versuche hier den Umgang mit Lazyvim darzustellen. 
+ Das Dokument ist in erster Linie für mich gemacht.
+ Um einen Anfang mit VIM zu machen, wollte ich eine Art Anleitung erstellen. Die mir hilft VIM zu installieren, \\einzurichten und zu bedienen.
+ Installiert habe ich Lazyvim, was eine Addon ist zu Neovim,das wiederum ist eine Weiterentwicklung von VIM, was wieder eine Weiterentwicklung von VI ist.
+ Der Maus habe ich auch etwas den Kampf angesagt, das ist wohl der Größte Grgnd für mich VIM zu verwenden. Auf meinem PC habe ich Arch Linux installiert und den i3wm Tillingmanager.
+ Den Weg habe ich in einem anderen Dokument beschrieben. Ich kann leider nicht sagen wie viel es damit zu tun, das ich wohl auf Dauer auf eine andere Tastatur umsteigen muss.
+ Wahrscheinlich werde ich bei etwas von Kinieses landen :(
+\end{LARGE}
+
+\section{Befehle}
+
+\subsection{Normal-Modus}
+
+\subsubsection{Motions Text}
+
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \= \kill
+  \> Kombi \> Beschreibung\\
+  \> h j k l \> links runter hoch rechts, geht auch mit dein Pfeiltasten\\
+  \> M \> in die Mitte des Bildschirms springen\\
+  \> w \> sprint an den Anfang des nächsten Worts Satzzeichen usw. werden als Wort erkannt\\
+  \> W \> sprint an den Anfang des nächsten Worts, überspringt Satzzeichen\\
+  \> e \> sprint an das Ende des nächsten Worts Satzzeichen  usw. werden als Wort erkannt\\
+  \> E \> sprint an das Ende des nächsten Worts, überspringt Satzzeichen\\
+  \> b \> sprint an den Anfang des vorherigen Worts Satzzeichen  usw. werden als Wort erkannt\\
+  \> B \> sprint an den Anfang des vorherigen Wortes, überspringt Satzzeichen\\
+  \> ge \> sprint an das Ende des vorherggen Wortes Satzzeichen  usw. werden als Wort erkannt\\
+  \> \begin{math} \textasciicircum \end{math}\> sprint an den Anfang der Zeile\\
+  \> \$ \> sprint an das Ende der Zeile\\
+  \> gg \> sprint in die erste Zeile\\
+  \> G \> sprint in die letzte Zeile\\
+  \> g\_ \> springt zum letzten Leerzeichen der Zeile\\
+  \> :40 \> sprint in die Zeile 40\\
+  \> 5j \> sprint 5 Zeilen nach unten\\
+  \> 5k \> sprint 5 Zeilen nach oben\\
+  \> \begin{math} \rbrace \end{math} \> sprint zum nächsten Abssatz\\
+  \> \begin{math} \lbrace \end{math} \> sprint zum vorherigen Abssatz\\
+ \end{tabbing}
+
+
+\subsubsection{Motions Monitor}
+
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \= \kill
+  \> ctrl+u \> springt halbe Seite nach oben\\
+  \> ctrl+d \> springt halbe Seite nach unten\\
+  \> ctrl+f \> springt in die letzte Zeile des Dokuemts, ist dann die erste Zeile in der Anzeige\\
+  \> ctrl+e \> springt eine Zeile nach unten ohne den Cursor zu bewegen\\
+  \> ctrl+y \> springt eine Zeile nach oben ohne den Cursor zu bewegen\\
+  \> zz \> Zeile in der der Cursor ist wird zentriert\\
+  \> zt \> Zeile in der der Cursor ist wird oben angezeigt\\
+  \> zb \> Zeile in der der Cursor ist wird unten angezeigt\\
+ \end{tabbing}
+
+
+\subsubsection{löschen}
+
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \= \kill
+  \> x \> löscht was unter dem Cursor ist\\
+  \> dd \> löscht die Zeile\\
+  \> dw \> löscht Cursor bis nächstes Wort\\
+  \> db \> löscht Cursor bis anfang des Wortes\\
+  \> 3dd \> löscht die nächsten 3 Zeilen\\
+ \end{tabbing}
+
+
+ \subsubsection{suchen}
+
+\begin{tabbing}
+ \hspace*{1mm} \=\hspace{30mm} \= \kill
+ \> gd \> sucht nach Begriff unter Cursor im Dokument\\
+ \> gD \> sucht nach Begriff unter Cursor im Ordner\\
+ \> n \> sprint zum nächsten Suchbegriff\\
+ \>   \> sprint zum vorherigen Suchebegriff\\
+\end{tabbing}
+
+\subsubsection{tabbing}
+\begin{tabbing}
+ \hspace*{1mm} \=\hspace{30mm} \= \kill
+ \> >> \> Zeile nach rechts\\
+ \> << \> Zeile nach links\\
+\end{tabbing}
+\subsubsection{Befehle}
+
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \= \kill
+  \> :q \> schließen\\
+  \> :qa \> alle Dokumente schließen\\
+  \> :w \> speichern\\
+  \> :x \> speichern und schließen\\
+  \> :q! \> schließen ohne speichern\\
+  \> ESC \> Modus verlassen\\
+  \> :ter \> Offnet ein Terminal in Neovim\\
+  \> u \> Rückgängig machen\\
+  \> ctrl+r \> Rück- Rückgänging machen\\
+\end{tabbing}
+\begin{verbatim} :%s/foo/bar/g \end{verbatim} foo wird durch bar ersetzt, im Dokument (g)\\
+
+
+\subsection{Einfügemodus}
+
+\subsubsection{Befehle}
+
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \= \kill
+  \> v \> öffnet den Visual-Modus\\
+  \> V \> öffnet den Visual-Modus für die Zeile\\
+  \> hjkl \> markieren vom Text\\
+  \> y \> kopirt markierten Text\\
+  \> yy \> kopiert die Zeile in der sich der Cursor befindet\\
+  \> s \> ersetzt den markierten Text\\
+  \> p \> fügt ein, was mit x gelöscht wird ist auch im Speicher\\
+
+
+ 
+
+
+\end{tabbing}
+
+\end{document}

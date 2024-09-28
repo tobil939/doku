@@ -1,0 +1,302 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{arev}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+\author{Tobi L}
+\title{Programmieren eines Arduinos}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Hardware}
+\subsection{Nano}
+\section{Umgebung}
+\subsection{Arduino IDE v2}
+\url{https://cloud.arduino.cc}\\
+Hab mich mit meinem github Account angemeldet.\\  
+Leider ist github bei SEG gesperrt.\\
+\subsection{Emulator}
+\subsubsection{Wokwi}
+\url{https://wokwi.com}\\
+Hab mich mit meinem github Accoutn angemeldet.\\ 
+Leider ist github bei SEG gesperrt.\\ 
+Man muss bei zeitkritischen Sachen sehr vorsichtig sein. Der Emulator ist sehr langsam.\\
+\section{Arduino C}
+\subsection{Funktionen}
+\subsubsection{Digital I/O}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>digitalRead(pin); \> ließt Wert von pin, kann HIGH oder LOW sein \\
+  \>digitalWrite(pin, Wert); \> Wert kann HIGH oder LOW sein\\ 
+  \>pinMode(pin, Mode); \>   Mode kann, INPUT, OUTPUT oder INPUT\_PULLUP sein \\
+  \> \> Am besten in setup() definieren\\ 
+  \> \> INPUT\_PULLUP Eingang mit einem \begin{math}20k\Omega \end{math} \\
+\end{tabbing}
+
+
+\subsubsection{Analog I/O}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{52mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>analogRead(pin); \> ließt Wert von pin ein, int Wert 10bit ADC \\
+  \>analogReadResolution(bit); \> kann die Auflösung des nachfolgenden \\ 
+  \> \> analogRead() ändern\\
+  \> \> bit kann 8, 10, 12 und 16bit\\ 
+  \> \> kommt auf die Hardware an.\\
+  \>analogReference(Wert) \> legt eine Referenzspannung fest. siehe Datenblatt\\
+  \> \> hier ein paar Beispiele für Wert\\ 
+  \> \> DEFAULT 5V oder 3,3V, siehe Datenblatt \\ 
+  \> \> INTERNAL 1,1V oder 2,56V siehe Datenblatt\\ 
+  \> \> EXTERNAL Spannung die an AREF-PIN angelegt ist\\
+  \>analogWrite(pin, Wert); \> PWM Signal, Frequenz und PIN\\ 
+  \> \> hängen vom ARduino ab, siehe Datenblatt\\ 
+  \> \> Wert muss ein int sein 0 bis 255\\ 
+  \> \> 255 100\% Duty Cycle; 127 50\% \\ 
+  \> \> die meisten Arduino haben keinen DAC nur PWM\\
+  \> analogWriteResolution(Wert); \> kann 1 bis 32 bit sein\\ 
+\end{tabbing}
+
+\subsubsection{Advanced I/O}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>tone(pin, freq); \>  \\
+  \>tone(pin, freq, dauer); \> erzeugt einen Ton >31Hź,\\ 
+  \> \> Weĺlenform ist mir noch unbekannt\\
+  \> \> freq kann ein int Wert sein, in Hz\\ 
+  \> \> dauer kann ein long Wert sein, in ms\\
+  \>notone(pin); \> beendet die Erzeugung eines Tons \\ 
+  \>pulseIn(pin, Wert); \> \\ 
+  \>pulseIn(pin, Wert, timeout); \> ermittelt die Zeit eines Impulses\\ 
+  \> \>  geht von 10ms bis 3 Minuten\\
+  \> \> Wert, was soll gemessen werden HIGH oder LOW\\ 
+  \> \> timeout, wie lange soll gewartet werden, typ long\\ 
+  \>pulseInLong(); \>  Unterschied zu pulseIn() unbekannt\\
+  \>shitIn(dataPin, clockPin, bitOrder); \> \\ 
+  \> \> shiftet ein Byte oder ein Bit\\ 
+  \> \> muss noch mehr darüber lesen\\ 
+  \> \> bitOrder MSBFIRST oder LSBFIRST\\ 
+  \>shiftOut(dataPin, clockPinm bitOrder, Wert); \> \\ 
+  \> \> muss noch mehr darüber lesen \\ 
+  \> \> bitOrder MSBFIRST oder LSBFIRST\\ 
+  \> \> Wert kann typ byte sein\\
+\end{tabbing}
+
+\subsubsection{Zeiten}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>delay(Wert); \> Warten in ms, typ long\\
+  \>delayMicroseconds(Wert); \> Warten in
+  \begin{math}\mu
+  \end{math}s, typ int \\
+  \>micros(); \> wie lange läuft das aktuell Programm in 
+  \begin{math}\mu 
+  \end{math}\\ 
+  \> \> typ long, max 70min \\
+  \>millis(); \> wie lange läuft das aktuell Programm in ms \\ 
+  \> \>  typ long, max 50 Tage\\
+\end{tabbing}
+
+
+\subsubsection{Zufallszahlen}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>random(max); \> typ long \\
+  \>random(min, max); \> zufällige Zahl zwischen min und max\\
+  \>randomSeed(); \> Zufallsgenerator, muss mehr darüber lesen\\
+\end{tabbing}
+
+
+\subsubsection{Kommunikation}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{USB}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Interrupts}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>noInterrupt(); \>Befehle danach werden nicht unterbrochen \\
+  \>interrupts(); \>Befehle danach können unterbochen werden\\
+\end{tabbing}
+
+
+\subsubsection{Externe Interrupts}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>digitalPinToInterrupt(pin); \>setzt einen Pin als Interrupt\\ 
+  \> \>welche Pins Interrupts sein können, siehe Datenblatt\\ 
+  \>attachInterrupt(interrupt, fn, mode); \> \\ 
+  \> \>Zweisung von Interrupts\\ 
+  \> \>intrerrupt, digitalPinToInterrupt(pin); verwenden\\ 
+  \> \>fn, Funktion die ausgeführt werden soll\\ 
+  \> \>mode, wenn Level von Pin \\ 
+  \> \>LOW, CHANGE, RISING, FALLING, HIGH\\
+  \>detachinterrupt(interrupt); \> deaktiviert Interrupts\\ 
+  \> \>interrupt, digitalPinToInterrupt(pin); verwenden\\
+\end{tabbing}
+
+
+\subsubsection{Bits und Bytes}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>bit(n) \>gibt den Wert des bits n zurück \\
+
+\end{tabbing}
+
+
+\subsubsection{Mathematik}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>abs(x); \> Absolutwert von x \\
+  \>constrain(x, a, b); \> beschränkt x auf den Bereich von a bis b\\
+  \>map(x, fromLow, fromHigh, toLow, toHigh); \> \\ 
+  \> \> bildet eine Zahl von einem Bereich in einen anderen ab\\
+  \>max(x, y); \> gibt die größere Zahl von x oder y zurück\\ 
+  \>min(x, y); \> gibt die kleinere Zahl von x oder y zurück\\ 
+  \>pow(base, exponent); \> base hoch exponent\\ 
+  \>sq(x); \> x quadrat\\ 
+  \>sqrt(x); \> Quardratwurzel von x\\ 
+\end{tabbing}
+
+
+\subsubsection{Trigonometrie}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm}\= \kill
+  \>cos(x); \> Cosinus von x, Bogenmaß, typ float, Ruckgabe ist double\\ 
+  \>sin(x); \> Sinus von x, Bogenma0, typ float, Rückgabe ist double\\ 
+  \>tan(x); \> Tangens von x, Bogenmaß, typ float, Rückgabe ist double\\
+\end{tabbing}
+
+
+\subsubsection{Zeichen}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsection{Variablen}
+
+\subsubsection{Datentypen}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befehl \>Beschreibung \\
+  \>bool var = val; \> var Name der Variable, val kann true oder false sein\\
+  \>byte var = val; \> var Name der Variable, val 8bit 0 bis 255\\ 
+  \>char var = 'A' \> einzelne Zeichen, kann auch die Nr. des ASCII angegben werden\\ 
+  \>char var = "ABC" \>Zeichenkette 8bit\\ 
+  \>double var = val \> Fließkommazahl meist 4 byte\\ 
+  \>float var = val \> Fließkommazahl meist 4 byte\\ 
+  \>int var = val \> Ganzzahlen 2 byte 
+    \begin{math} 
+      -2^{15} bis 2^{15}
+    \end{math}\\ 
+  \>long var = val \> Ganzzahlen 4 byte 
+    \begin{math}
+      -2^{31} bis 2^{31}
+    \end{math}\\ 
+  \>short var = val \> Ganzzahlen 2 byte 
+    \begin{math}
+      -2^{15} bis 2^{15}
+    \end{math}\\ 
+  \>size\_t var = val \> Datentyp kann ein Objekt sein\\ 
+\end{tabbing}
+
+
+\subsubsection{Konstanten}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Scope und Bezeichne}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Converter}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Hilfsmittel}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{30mm} \=\hspace{60mm}\= \kill
+  \>Befel \>Beispiel \> Kommentar \\
+\end{tabbing}
+
+
+\subsection{Struktur}
+
+\subsubsection{Operatoren}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Sketch}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Kontrollstruktur}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+
+\subsubsection{Weitere Syntax}
+\begin{tabbing}
+  \hspace*{1mm} \=\hspace{50mm} \= \kill
+  \>Befel \>Beschreibung \\
+  \>digitalRead(pin) \> ließt Wert von pin, kann HIGH oder LOW sein \\
+\end{tabbing}
+
+\end{document}
+
