@@ -260,6 +260,8 @@ Installation über Wlan.
 4- \textit{station "von Liste auswählen" connect "von Liste auswählen"}\\
 \hspace*{3 mm} Netzwerk am besten ohne Sonderzeichen, das PW auch über Sonderzeichen\\
 5. \textit{ctl+c} um wieder zurück zu kommen\\
+\subsection{Could not strap in package}
+\textit{pacman -Sy archlinux-keyring}\\
 \subsection{Install-Script}
 Achtung US-Tastatur\\
 1. \textit{archinstall}\\
@@ -295,7 +297,7 @@ Immer wieder mal nach Updates suchen, am besten vor größeren Installationen\\
 \textit{sudo pacman -Syu}\\
 \textit{sudo pacman -Syyu} scannt die ganze Datenbank\\
 \paragraph{neofetsch}
-\textit{sudo pacman -S neofetch} Infprmationen im Terminal über das System\\
+\textit{sudo pacman -S neofetch} Informationen im Terminal über das System\\
 -bashrc finde und am Ende neofetch rein schreiben\\
 \paragraph{alacritty}
 \textit{sudo pacman -S alacritty} installtiert ein Terminal für i3\\
@@ -317,8 +319,6 @@ Wir benötigt um Pakete zu installieren, wie pacman\\
 \paragraph{Schriftarten}
 Hier werden die Meslo Nerd Font installiert\\
 \textit{yay -S ttf-meslo-nerd} \\
-\paragraph{stow}
-\textit{yay -S stow} 
 \paragraph{picom}
 \textit{yay -S picom} bessere grafische Darstellung, X11 composer\\
 \begin{verbatim}
@@ -328,16 +328,41 @@ cp /etc/xdg/picom.conf ~/.config/picom.conf
 \textit{yay -S polybar} Statusleiste bei i3wm\\
 config von typecraft kopiert\\
 \paragraph{feh}
-\textit{yay -S feh}
+\textit{yay -S feh} viewer wird benötigt um Hintergrundbilder an zu zeigen\\
 \paragraph{git}
 \textit{yay -S git}\\
 \textit{yay -S git-git}\\
 \paragraph{timeshift}
-\textit{pacman -S timeshift}
+\textit{pacman -S timeshift} setzt Wiederherstellungspunkte\\
 \paragraph{xorg}
-\textit{pacman -S xorg}
+\textit{pacman -S xorg} Display Server, verwaltung von z.B. gnopme und i3\\
+\paragraph{dark theme}
+\textit{pacman -S gnome-themes-extra}
+\paragraph{Auswahlfenster Dark Theme}
+\textit{pacman -S lxappearance}
+\paragraph{npm}
+\textit{yay -S npm} Pakete in nvim zu installieren\\
+\textit{sudo npm install -g tree-sitter-cli}
+\paragraph{gtk}
+\textit{pacman -S gtk}
+\textit{pacman -S gtk2}
+\textit{pacman -S gtk3}
+\textit{pacman -S gtk4}
+\paragraph{todo Liste}
+\textit{pacman -S endeavour}
+\paragraph{PDF Viewer}
+\textit{pacman -S evince}
+\paragraph{LaTeX}
+\textit{texlive} LaTeX compiler\\ 
+\textit{texmaker} LaTeX Editor\\ 
+\paragraph{nitrogen}
+\textit{pacman -S nitrogen} Auswahlfenster für Hintergründe\\ 
+\paragraph{Kalender}
+\textit{pacman -S gnome-calendar}
+\paragraph{Editor}
+\textit{neovim}
 
-\chapter{Ubuntu}
+chapter{Ubuntu}
 \section{Installation}
 \section{Installation Pakete}
 \textit{sudo apt install python3}
@@ -366,7 +391,7 @@ config von typecraft kopiert\\
 \textit{sudo apt install i3}\\
 \textit{sudo pacman -S i3}\\
 Bei der Installation wird gefragt was die Mod-Taste sein soll, Windwos oder Alt, ich verwende Alt.
-Finde es bei manachen Kombis leichter zum greifen\\
+Finde es bei manachen Kombis leichterkzum greifen\\
 \paragraph{xorg}
 \textit{sudo pacman -S xorg} ist sowas wie die Basis von i3wm\\
 \subsection{config}
