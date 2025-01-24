@@ -1,0 +1,180 @@
+% ==================== Anfang des Dokuments
+% Vorlage für einen kurzen Bericht um die Vorkomnisse an einen Messtag zu dokumentieren.
+% Am besten vor Feierabend kurz ein paar Minuten zeit nehmen und das wichtigest eintragen.
+% Keine Details, Adressen, Messdaten oder Anleitungen in diesesm Bericht dokumentieren.
+% Zumindest solange der Ort der Kompilierung noch fragwürdig ist.
+
+\documentclass[9pt,twoside]{article}                  % Artikel, beidseitig, Schriftgröße 9 
+
+% ==================== Verwendete Pakete
+\usepackage[utf8]{inputenc}                           % Umlaute Teil I 
+\usepackage[T1]{fontenc}                              % Umlaute Teil II 
+\usepackage[ngerman]{babel}                           % deutsches Sprachpacket 
+\usepackage{fancyhdr}                                 % Kopf- und Fußzeile 
+\usepackage{fancybox}                                 % Einfache Rahmen 
+\usepackage{geometry}                                 % Seitenränder 
+\usepackage{array}                                    % Bessere Darstellung von Tabellen 
+%\usepackage{graphicx}                                 % Einfügen von Bildern und Grafiken 
+\usepackage{setspace}                                 % Zeilenabstand 
+\usepackage{amsmath}                                  % Mathematische Symbole 
+\usepackage{textgreek}                                % Griechisches Alphabet 
+
+% ==================== Seitenlayout und Seitenränder
+\geometry{
+  a4paper,                                            % Papierformat  
+  left=1.5cm,                                         % Seitenränder 
+  right=1.5cm,
+  top=2cm,
+  bottom=2cm
+}
+\setstretch{1.1}                                      % Zeilenabstand 
+
+% ==================== Kopf- und Fußzeile
+\pagestyle{fancy}                                     % Aufteilung von fancy verwenden 
+\fancyhf{}                                            % Leere Kopf- und Fußzeilen Einfügen 
+\setlength{\headheight}{15pt}                         % Platz für Kopfzeile 
+\setlength{\footskip}{20pt}                           % Platz für Fußzeile 
+
+% ==================== Kopfzeile
+\fancyhead[L]{\textbf{Titel des Dokuments}}           % Titel oben Links 
+\fancyhead[R]{\today}                                 % Datum des speicherns einfügen 
+
+% ==================== Fußzeile
+\fancyfoot[L]{Autor}                                  % Autor unten links 
+\fancyfoot[C]{Abteilung}                              % Abteilungn unten mittig 
+\fancyfoot[R]{Projekt}                                % Projekt unten rechts 
+
+% ==================== Begin des Dokuments
+\begin{document}
+
+% ==================== Kurzfassung
+% Kurze Zusammenfassung des Tages, ca. zwei Zeilen
+\section*{Kurzfassung}
+\begin{Sbox}                                          % erzeugt einen Rahmen um den Text 
+  \begin{minipage}{\textwidth}                        % lässt den Rahmen um den Text wachsen 
+    Bunga Bunga hart \\
+  \end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}                                       % einfacher Rahmen 
+\vspace{1cm}                                          % erzeugt einen Abstand von 1cm 
+
+% ==================== Wichtes 
+% Besonderheiten und Sachen die herausgestochen sind
+\section*{Besonderheiten / Wichtigste}
+\begin{Sbox}
+  \begin{minipage}{\textwidth}
+    Bunga bunga hart \\
+  \end{minipage}
+\end{Sbox}
+\doublebox{\TheSbox}                                  % doppelter Rahmen 
+\vspace{1cm}
+
+% ==================== Bericht
+% Eigentlicher Bericht
+\section*{Bericht}
+\begin{Sbox}
+  \begin{minipage}{\textwidth}
+    bunga bunga hart \\ 
+  \end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\vspace{1cm}
+
+\newpage                                              % springt auf eine neue Seite 
+% ==================== Aufgaben 
+% Aufgaben für einen anderen Zeitpunkt oder für jemand anderes 
+\section*{Aufgaben}
+\begin{Sbox}
+  \begin{minipage}{\textwidth}
+    Bunga bunga hart \\
+  \end{minipage}
+\end{Sbox}
+\doublebox{\TheSbox}
+
+% ==================== Ende des Dokuments 
+\end{document}                                        % Bis hier geht die Kompilierung 
+
+
+
+
+% ==================== Vorlagen
+% vorlagen für haufig verwendete Anwendungen und Formate
+
+% ==================== Textformen
+\noindent                                             % Unterdrückt die Indentierung 
+Textformen \\
+\textbf{fett} \\ 
+\textit{kursiv} \\ 
+\underline{unterstrichen} \\ 
+\underline{\underline{doppelt unterstrichen}} \\      % so können auch anderer Formate kombiniert werden 
+
+% ==================== Zeichen
+\noindent
+Zeichen \\ 
+\textmu \\                                            % verwendet das textgreek-Paket 
+$ 47 \mu F $ \\                                       % verwendet das Mathe-Paket, inline Modus 
+\textSigma \\ 
+$ \sum $ \\                                           % Text im Mathemodus ist kursiv 
+\textOmega \\ 
+R = 22m\textOmega \\ 
+$ R = 22m \Omega $ \\ 
+$ \rightarrow  \uparrow  \downarrow  \leftarrow $ \\ 
+
+% ==================== Aufzählungen
+\noindent
+Aufzählungen
+\begin{itemize}
+  \item Erster Punkt
+  \item Zweiter Punkt
+\end{itemize}
+
+% ==================== Aufzählungen mit Nummern 
+\noindent
+Numerierungen
+\begin{enumerate}
+  \item Erster Punkt 
+  \item Zweiter Punkt
+\end{enumerate}
+
+% ==================== Tabular
+\noindent
+Tabelle ohne Striche
+\begin{tabbing}
+  \hspace{2cm} \= \hspace{2cm} \= \hspace{4cm} \= \kill % Vorgabe der Spalten
+  Spalte 1 \> Spalte 2 \> Spalte 3 \\                 % Zeilen hinzufügen wie man möchte 
+  Wert 1 \> Wert 2 \> Wert 3 \\ 
+\end{tabbing}
+
+% ==================== Tabellen
+\noindent
+Tabelle mit Strichen 
+\begin{tabular}{|c||c|c|} \hline                      % Definition der Tabelle | für Stirche  
+  Spalte 1 & Spalte 2 & Spalte 3 \\ \hline \hline
+  Wert 1 & Wert 2 & Wert 3 \\ \hline
+\end{tabular}
+
+% ==================== Bilder einfügen
+Bild einfügen \\ 
+\begin{figure}[h] 
+  \centering                                          % Bild wird zentriert 
+  \includegraphics[width=0.5\textwidth]{bild.jpg}     % Bild wird um 50% geschrumpft 
+  \caption{Bildname}                                  % Name des Bildes, falls benötigt 
+  \label{fig:beispiel}                                % Label, falls darauf verwiesen werden solle 
+\end{figure}
+Verweis auf das Bild im Text durch \ref{fig:beispiel}
+
+% ==================== Boxen nebeneinander
+\noindent
+Zwei Boxen nebeneinander
+\begin{Sbox}
+  \begin{minipage}[t]{0.45\textwidth}                 % 45% des verfügbaren Platzes, t verstehe ich noch nicht 
+    bunga bunga hart \\ 
+  \end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
+\begin{Sbox}
+  \begin{minipage}[t]{0.45\textwidth}
+    bunga bunga hart \\ 
+  \end{minipage}
+\end{Sbox}
+\fbox{\TheSbox}
