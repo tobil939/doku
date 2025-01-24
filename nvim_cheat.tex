@@ -1,0 +1,144 @@
+\documentclass[a4paper,11pt,twoside]{article}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\pagestyle{empty}
+
+\begin{document}
+\section*{Modus}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> i \> Einfügemodus vor Cursor \\
+  \> a \> Einfügemodus nach Cursor \\
+  \> r \> Zeichen unter Cursor ersetzen \\ 
+  \> R \> überschreiben ab Cursor \\
+  \> v \> markieren \\
+  \> vb \> markiert Cursor bis Anfang vorheriges Word \\
+  \> V \> ganze Zeilen markieren \\
+  \> : \> Komandos \\
+  \> ESC \> in den normaler Modus, auch aktueller Befehl abbrechen \\
+\end{tabbing}
+
+\section*{Bewegung}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> h \> links \\ 
+  \> j \> runter \\ 
+  \> k \> hoch \\ 
+  \> l \> links \\ 
+  \> gg \> erste Zeile \\ 
+  \> G \> letzte Zeile \\
+  \> w \> Sprung Wortweise vorwärts \\ 
+  \> b \> Sprung Wortweise rückwärts \\
+  \> \^{} \> Sprung an Anfang der Zeile \\
+  \> \$ \> Sprung an ende der Zeile \\
+  \> :23 \> Sprung in die Zeile 23 \\ 
+  \> 4j \> Sprung 4 Zeilen nach unten \\
+  \> \# \> Sprung zum gleichen Wort oder Zeichen, rückwärts \\ 
+  \> * \> Spring zum gleichen Wort oder Zeichen, vorwärts \\
+  \> 23G \> Springt in Zeile 23 \\
+  \> ( \> Springt einen Absatz nach oben, erstes Zeichen \\ 
+  \> ) \> Springt einen Absatz nach unten, letztes Zeichen \\
+  \> [ \> Springt einen Absatz nach oben \\ 
+  \> ] \> Springt einen Absatz nach unten \\
+\end{tabbing}
+
+\section*{Ansicht}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> zt \> Zeile mit Curosr oben zentrieren \\ 
+  \> zz \> Zeile mit Cursor mittig zentrieren \\ 
+  \> zb \> Zeile mit Cursor unten zentrieren \\
+  \> Gzt \> Ende der Datei oben zentrieren \\ 
+  \> 40Gzz \> Zeile Nr. 40 mittig zentrieren \\
+\end{tabbing}
+
+\section*{Löschen}
+  \textbf{gelöschter Text wird meist ins Clipboard geschoben} \\ 
+  \textbf{und überschreiben das letzte im Clipboard} \\
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> x \> löscht unter Cursor vorwärts \\
+  \> X \> löscht unter Cursor rückwärts \\
+  \> dd \> löscht ganze Zeile \\
+  \> dw \> löscht Wort ab Cursor vorwärts \\
+  \> db \> löscht Wort ab Cursor rückwärts \\
+  \> di\{ \> löscht Inhalt von \{\} \\
+\end{tabbing}
+
+\section*{Ersetzen}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> c \> ersetzen \\ 
+  \> cw \> ersetzt unter Cursor vorwärts \\ 
+  \> cb \> ersetzt unter Cursor rückwärts \\
+  \> ci\{ \> ersetzt Inhalt von \{ \}
+\end{tabbing}
+\begin{verbatim} 
+  :%s/bunga/bingo/gc
+\end{verbatim}  
+  erstzt bunga durch bingo, Nachfrage bei jedem Fall \\ 
+
+\section*{Finden}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{40mm} \= \kill
+  \> /bunga ENTER n \> sucht bunga und springt zum nächten bunga, N rückwärts \\ 
+  \> ?bunga ENTER n \> sucht bunga und springt zum vorherigen bunga, N rückwärts \\
+  \> g* \> sucht gleiches Wort unter Cursor, vorwärts \\
+  \> g\# \> sucht gleiches Wort unter Cursor, rückwärts \\ 
+  \> f\} \> sucht nach \}, F rückwärts \\
+\end{tabbing}
+
+\section*{Speichern}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{40mm} \= \kill
+ \> :w \> speichern \\ 
+ \> :w bunga.txt \> speichert unter bunga.txt \\ 
+ \> :wa \> speichert alle Tabs \\ 
+ \> :x \> speichert und öffnet neue Datei \\ 
+ \> ZZ \> speichert und beendet \\ 
+ \> :q! \> beenden ohen speichern \\ 
+\end{tabbing}
+
+\section*{Öffnen}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{40mm} \= \kill
+ \> :e bunga.txt \> öffnet die Datei Bunga im gleichen Tab \\ 
+ \> :tabnew bunga.txt \> öffnet Datei in neuem Tab \\
+\end{tabbing}
+
+\section*{Tabs}
+\begin{tabbing}
+  \hspace{3mm} \= \hspace{20mm} \= \kill
+  \> :tabnew \> öffnet Leeren Tab \\ 
+  \> gt \> sprint zum nächsten offenen Tab \\ 
+  \> gT \> sprint zum vorherigen offenen Tab \\ 
+  \> :tabs \> Liste mit offenen Tab \\ 
+  \> :tabn 3 \> sprint zu Tab Nr. 3 \\ 
+  \> :tabclose \> aktuellen Tab schließen \\ 
+  \> :tabonly \> alle Tab bis auf aktuellen schließen \\
+  \> :new \> neuen Tab horizontal \\ 
+  \> :vnew \> neuen Tab vertiakal \\ 
+  \> :close \> schließt aktuellen Tab \\ 
+  \> :only \> schließt alle Tabs bis auf aktuellen \\ 
+\end{tabbing}
+\end{document}
+
+%% Haupttext
+%\section*{Einleitung}
+%Hier beginnt dein Bericht. Du kannst mit der Einleitung starten und deine Gedanken klar strukturieren. Verwende Absätze, um die Lesbarkeit zu verbessern.
+%
+%\section*{Hauptteil}
+%Im Hauptteil kannst du das Thema ausführlich behandeln. Gliedere deinen Text in Abschnitte und verwende Aufzählungen, falls nötig:
+%
+%\begin{itemize}
+%    \item Erster Punkt
+%    \item Zweiter Punkt
+%    \item Dritter unkt
+%\end{itemize}
+%
+%\section*{Schluss}
+%Fasse im Schluss die wichtigsten Erkenntnisse deines Berichts zusammen und gib ggf. einen Ausblick.
+%
+%
